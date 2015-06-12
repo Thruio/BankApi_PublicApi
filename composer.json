@@ -6,9 +6,19 @@
         "email": "matthew@baggett.me"
     }
   ],
+  "repositories": [
+    {
+      "url": "https://github.com/Thruio/ActiveRecord.git",
+      "type": "git"
+    },{
+      "url": "https://github.com/Thruio/LibBank",
+      "type": "git"
+    }
+  ],
   "require": {
     "slim/slim": "~2.6.2",
     "thru.io/active_record": "dev-master",
+    "thru.io/libbank": "dev-master",
     "phpunit/phpunit": "4.7.2",
     "monolog/monolog": "~1.0"
   },
