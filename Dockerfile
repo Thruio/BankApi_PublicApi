@@ -47,7 +47,7 @@ RUN chmod 755 /*.sh
 # Configure /app folder with sample app
 RUN mkdir -p /app && rm -fr /var/www/html && ln -s /app /var/www/html
 ADD . /app
-#ADD .htaccess /app/.htaccess
+ADD .htaccess /app/.htaccess
 ADD ApacheConfig.conf /etc/apache2/sites-enabled/000-default.conf
 
 # Run Composer
