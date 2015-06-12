@@ -20,7 +20,8 @@
     "thru.io/active_record": "dev-master",
     "thru.io/libbank": "dev-master",
     "phpunit/phpunit": "4.7.2",
-    "monolog/monolog": "~1.0"
+    "monolog/monolog": "~1.0",
+    "thru.io/json-pretty-printer": "1.0.0"
   },
   "autoload"   : {
     "psr-4": {

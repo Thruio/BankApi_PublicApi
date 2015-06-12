@@ -2,6 +2,8 @@
 require_once("bootstrap.php");
 use Slim\Slim;
 use Thru\ActiveRecord\ActiveRecord;
+use \Thru\JsonPrettyPrinter\JsonPrettyPrinter;
+
 $app = new Slim();
 
 // List function
@@ -20,7 +22,7 @@ $app->get('/:model', function ($model) use ($app) {
     $response = $app->response();
     $response['Content-Type'] = 'application/json';
     $response->status(200);
-    $response->body(json_encode($responseObjects));
+    $response->body(JsonPrettyPrinter::json($responseObjects));
 
   }else{
     $app->notFound();
