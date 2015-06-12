@@ -14,7 +14,7 @@ $app->get('/:model', function ($model) use ($app) {
     $responseObjects = [];
     foreach($list as $item){
       /** @var ActiveRecord $item  */
-      $responseObjects = $item->__toPublicArray();
+      $responseObjects[] = $item->__toPublicArray();
     }
 
     $response = $app->response();
