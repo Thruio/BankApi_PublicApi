@@ -1,0 +1,25 @@
+{
+  "name": "thru.io/bank-api",
+  "authors": [
+    {
+        "name": "Matthew Baggett",
+        "email": "matthew@baggett.me"
+    }
+  ],
+  "require": {
+    "slim/slim": "~2.6.2",
+    "thru.io/active_record": "dev-master",
+    "phpunit/phpunit": "4.7.2",
+    "monolog/monolog": "~1.0"
+  },
+  "autoload"   : {
+    "psr-4": {
+      "Thru\\Bank\\Accounts\\": "src"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Thru\\Bank\\Accounts\\Test\\": "tests/"
+    }
+  }
+}
