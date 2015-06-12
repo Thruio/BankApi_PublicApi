@@ -1,7 +1,7 @@
 <?php
 
 // Database Settings
-if (isset($_SERVER['MYSQL_PORT'])) {
+if (isset($_SERVER['THRUIO_ENV_MYSQL_DATABASE'])) {
   $database = new \Thru\ActiveRecord\DatabaseLayer(array(
     'db_type'     => 'Mysql',
     'db_hostname' => $_SERVER['MYSQL_1_ENV_TUTUM_NODE_FQDN'],
