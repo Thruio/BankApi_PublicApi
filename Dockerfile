@@ -39,6 +39,17 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 ENV TZ "Europe/London"
 RUN echo $TZ | tee /etc/timezone \
   && dpkg-reconfigure --frontend noninteractive tzdata
+  
+# Add NewRelic repo & install
+RUN wget -O - https://download.newrelic.com/548C16BF.gpg | sudo apt-key add -
+RUN sudo sh -c 'echo "deb http://apt.newrelic.com/debian/ newrelic non-free" > /etc/apt/sources.list.d/newrelic.list'
+RUN sudo apt-get update;
+RUN sudo apt-get install -yq newrelic-php5
+
+# Run Newrelic Install & Configure
+RUN newrelic-install install
+ADD newrelic.ini /etc/php5/cli/conf.d/newrelic.ini
+ADD newrelic.ini /etc/php5/apache2/conf.d/newrelic.ini
 
 # Add image configuration and scripts
 ADD run.sh /run.sh
