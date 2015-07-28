@@ -1,7 +1,7 @@
 Bank API
 =====================
 
-[![Build Status](https://travis-ci.org/Thruio/BankApi.svg?branch=master)](https://travis-ci.org/Thruio/BankApi) [![Code Climate](https://codeclimate.com/github/Thruio/BankApi/badges/gpa.svg)](https://codeclimate.com/github/Thruio/BankApi) [![Test Coverage](https://codeclimate.com/github/Thruio/BankApi/badges/coverage.svg)](https://codeclimate.com/github/Thruio/BankApi/coverage)
+[![Build Status](https://travis-ci.org/Thruio/BankApiAccounts.svg?branch=master)](https://travis-ci.org/Thruio/BankApiAccounts) [![Code Climate](https://codeclimate.com/github/Thruio/BankApi/badges/gpa.svg)](https://codeclimate.com/github/Thruio/BankApi) [![Test Coverage](https://codeclimate.com/github/Thruio/BankApi/badges/coverage.svg)](https://codeclimate.com/github/Thruio/BankApi/coverage)
 
 Beginings of a unified selenium-driven bank-account scraper. Requires PHP 5.5 and later.
 
