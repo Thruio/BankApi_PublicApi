@@ -21,7 +21,8 @@
     "thru.io/libbank": "dev-master",
     "phpunit/phpunit": "4.7.2",
     "monolog/monolog": "~1.0",
-    "thru.io/json-pretty-printer": "1.0.0"
+    "thru.io/json-pretty-printer": "1.0.0",
+    "raveren/kint": "^1.0"
   },
   "autoload"   : {
     "psr-4": {
