@@ -25,8 +25,13 @@ $app->get("/summary/:account_holder_name", function($account_holder_name) use ($
     $nameCleaned = trim(preg_replace("/\\([^)]+\\)/","",$account->name));
     $displayName = "({$nameHash}) {$nameCleaned}";
 
-    $responseObjects->total += $account->getBalance()->value;
-    $responseObjects->balances[$displayName] = $account->getBalance()->value;
+    $balance = $account->getBalance();
+    if($balance) {
+      $responseObjects->total += $balance->value;
+      $responseObjects->balances[$displayName] = $balance->value;
+    }else{
+      $responseObjects->balances[$displayName] = "Unavailable";
+    }
   }
 
   $response = $app->response();
