@@ -20,6 +20,7 @@ $app->get("/summary/:account_holder_name", function($account_holder_name) use ($
   // Calculate Totals.
   $responseObjects->total = 0;
   $responseObjects->balances = [];
+  $responseObjects->lastUpdated = null;
   foreach($account_holder->getAccounts() as $account){
     $nameHash = substr(md5($account->name),0,7);
     $nameCleaned = trim(preg_replace("/\\([^)]+\\)/","",$account->name));
@@ -31,6 +32,9 @@ $app->get("/summary/:account_holder_name", function($account_holder_name) use ($
       $responseObjects->balances[$displayName] = $balance->value;
     }else{
       $responseObjects->balances[$displayName] = "Unavailable";
+    }
+    if(strtotime($balance->getRun()->updated) > strtotime($responseObjects->lastUpdated)) {
+      $responseObjects->lastUpdated = $balance->getRun()->updated;
     }
   }
 
