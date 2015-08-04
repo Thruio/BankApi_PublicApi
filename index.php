@@ -6,6 +6,9 @@ use \Thru\JsonPrettyPrinter\JsonPrettyPrinter;
 use Thru\BankApi\Models\AccountHolder;
 use Thru\BankApi\Models\Account;
 
+error_reporting(E_ALL);
+ini_set('display_errors',1);
+
 $app = new Slim();
 
 $app->get("/summary/:account_holder_name", function($account_holder_name) use ($app){
@@ -30,12 +33,13 @@ $app->get("/summary/:account_holder_name", function($account_holder_name) use ($
     if($balance) {
       $responseObjects->total += $balance->value;
       $responseObjects->balances[$displayName] = $balance->value;
+      if(strtotime($balance->getRun()->updated) > strtotime($responseObjects->lastUpdated)) {
+        $responseObjects->lastUpdated = $balance->getRun()->updated;
+      }
     }else{
       $responseObjects->balances[$displayName] = "Unavailable";
     }
-    if(strtotime($balance->getRun()->updated) > strtotime($responseObjects->lastUpdated)) {
-      $responseObjects->lastUpdated = $balance->getRun()->updated;
-    }
+
   }
 
   $response = $app->response();
