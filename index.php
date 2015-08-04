@@ -34,5 +34,9 @@ $app->get('/:model/:id', function ($model, $id) {
 
 });
 
+$app->get("/", function (){
+  echo "Api documentation doesn't exist yet.";
+});
+
 
 $app->run();
