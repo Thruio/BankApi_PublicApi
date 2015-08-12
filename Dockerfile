@@ -75,6 +75,8 @@ RUN a2enmod rewrite && /etc/init.d/apache2 restart
 #================================
 VOLUME /var/log
 
+RUN mkdir /var/log/apache2/
+
 EXPOSE 80
 
 WORKDIR /app
