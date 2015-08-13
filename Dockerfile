@@ -70,11 +70,6 @@ RUN cd /app && composer update
 # Enable mod_rewrite
 RUN a2enmod rewrite && /etc/init.d/apache2 restart
 
-#================================
-# Expose Container's Directories
-#================================
-VOLUME /var/log
-
 EXPOSE 80
 
 WORKDIR /app
