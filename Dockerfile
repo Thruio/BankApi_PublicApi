@@ -32,7 +32,8 @@ RUN apt-get update && \
         pwgen \
         bc \
         php-apc && \
-    rm -rf /var/lib/apt/lists/*
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 RUN sed -i "s/variables_order.*/variables_order = \"EGPCS\"/g" /etc/php5/apache2/php.ini
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
@@ -41,10 +42,12 @@ RUN echo $TZ | tee /etc/timezone \
   && dpkg-reconfigure --frontend noninteractive tzdata
   
 # Add NewRelic repo & install
-RUN wget -O - https://download.newrelic.com/548C16BF.gpg | sudo apt-key add -
-RUN sudo sh -c 'echo "deb http://apt.newrelic.com/debian/ newrelic non-free" > /etc/apt/sources.list.d/newrelic.list'
-RUN sudo apt-get update;
-RUN sudo apt-get install -yq newrelic-php5
+RUN wget -O - https://download.newrelic.com/548C16BF.gpg | sudo apt-key add - && \
+    sh -c 'echo "deb http://apt.newrelic.com/debian/ newrelic non-free" > /etc/apt/sources.list.d/newrelic.list' && \
+    apt-get update && \
+    apt-get install -yq newrelic-php5 && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Run Newrelic Install & Configure
 RUN newrelic-install install
